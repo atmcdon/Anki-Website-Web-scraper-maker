@@ -51,7 +51,7 @@ soup = BeautifulSoup(response.text, 'html.parser')
 content_div = soup.select_one('#post-36929 > div > div > div.thecontent.clearfix')
 
 if content_div:
-    # The content_div exists, proceed with scraping questions and answers
+    # The content_div exists will proceed with scraping questions and answers
     elements = content_div.find_all(['p', 'ul'])
     insideElement = None
 
@@ -72,33 +72,21 @@ if content_div:
             if insideElement != None:
                 # print("ELEMENT FOUND", element )
                 current_explanation = element.get_text()
-            
-            # explanation_text = element.find('Explanation:')
 
+            #TESTING 
+            # explanation_text = element.find('Explanation:')
             # print(element)
             # print(explanation_text)
 
             if strong_tag:
                 text = strong_tag.get_text()
                 
-                # if current_question:
-                #     # Create a flashcard for the previous question
-                #     flashcards.append((current_question, answer_options_forQuestion, current_answer_options, current_explanation))
-
                 current_question = text
                 current_answer_options = []
                 current_answer_options_question = []
 
-
-
-                # if insideElement:
-                #     current_explanation = insideElement
-
+                #Testing
                 # print (current_explanation)
-
-                
-                
-
         elif element.name == 'ul':
             # Extract the list items from the <ul> element
             li_elements = element.find_all('li')
